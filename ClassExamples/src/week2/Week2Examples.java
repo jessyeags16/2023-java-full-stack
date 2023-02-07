@@ -1,4 +1,4 @@
-package com.tek.example2;
+package week2;
 import java.util.Scanner; //import scanner
 
 public class Week2Examples {
@@ -17,6 +17,13 @@ public class Week2Examples {
 	
 	input.close();
 		
-
 }
+	int x = 5;
+	int y = 6;
+	
+	double q = y/x;
+	//System.out.println(q)
+	
+	//q = (double)y;
+	
 }

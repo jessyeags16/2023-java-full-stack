@@ -5,5 +5,5 @@
  * @author Jessica Yeager
  *
  */
-module ClassExamples {
+module CoreJavaBasics {
 }
