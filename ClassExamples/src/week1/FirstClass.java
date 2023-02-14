@@ -1,4 +1,4 @@
-package com.tek.example1;
+package week1;
 
 public class FirstClass {
 	//this is a comment to practice one line comments
