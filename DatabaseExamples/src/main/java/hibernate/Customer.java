@@ -1,10 +1,14 @@
 package hibernate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -46,12 +50,26 @@ public class Customer {
 	@Column(name = "country")
 	private String country;
 
-	@Column(name = "salesRepEmployeeNumber")
+	// repeated column in mapping for entity error sparked us to do this
+	// this is making this a read only variable in this entity object
+	// we add the insertable = false and updatable = false because we are using a
+	// @ManyToOne mapping
+	// that is on this same column
+	// the other option is to delete these two lines
+	@Column(name = "salesRepEmployeeNumber", insertable = false, updatable = false)
 	private Integer salesRepEmployeeNumber;
 
-	@Column(name = "credit_limit", columnDefinition="decimal", precision=10, scale=2)
+	@Column(name = "credit_limit", columnDefinition = "decimal", precision = 10, scale = 2)
 	private Double creditLimit;
-	
+
+	// salesRepEmployeeNumber allows for null values and since this is a foreign key
+	// we need to set up
+	// optional = true and nullable = true to tell hibernate that null values are
+	// okay
+	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
+	@JoinColumn(name = "salesRepEmployeeNumber", nullable = true) // is your foreign key null or not?
+	private Employee employee;
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", customerName=" + customerName + ", contactLastname=" + contactLastname
@@ -163,6 +181,14 @@ public class Customer {
 
 	public void setCreditLimit(Double creditLimit) {
 		this.creditLimit = creditLimit;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 }

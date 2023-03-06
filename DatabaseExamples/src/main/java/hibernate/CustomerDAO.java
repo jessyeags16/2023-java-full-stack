@@ -50,7 +50,7 @@ public class CustomerDAO {
 		// this is HQL which is hibernate query language
 		// aka JPA//very close to SQL but different, notice Customer below is the java
 		// object
-		// and c.id is actually refering to .id in the Customer.java class
+		// and c.id is actually referring to .id in the Customer.java class
 		// notice where idParam matches the query.setParameter
 		String hql = "FROM Customer c where c.id = :idParam";
 		TypedQuery<Customer> query = session.createQuery(hql, Customer.class);

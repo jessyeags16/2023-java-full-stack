@@ -28,14 +28,14 @@ public class HibernateExample {
 		
 		// he.insert()
 
-		Customer first = customerDao.findById(497);
+		Customer first = customerDao.findById(103);
 		System.out.println(first.toString());
 
 		first.setAddressLine1("this is an update");
 		first.setCreditLimit(1000000.35);
 
 		customerDao.updateCustomer(first);
-		customerDao.delete(first);
+		//customerDao.delete(first);
 
 		// List<Customer> firstNames = he.findByContactFirstName("Leslie");
 		// for (Customer c : firstNames) {
