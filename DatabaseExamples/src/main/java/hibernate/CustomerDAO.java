@@ -13,7 +13,7 @@ public class CustomerDAO {
 	//in update you use merge, insert uses save 
 	//this is proper CRUD, create, reading (finding), 
 
-	public void updateCustomer(Customer customer) {
+	public void update(Customer customer) {
 		// this is boiler plate code, it will all stay the same except it'll be an
 		// employee passed in and merge employee
 		// springboot does for us
@@ -60,8 +60,8 @@ public class CustomerDAO {
 		session.close();
 
 		return result;
-
 	}
+	
 	
 	public void delete(Customer customer) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
